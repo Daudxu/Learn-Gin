@@ -18,6 +18,7 @@ func main() {
 	}
 
 	r.Use(func(ctx *gin.Context) {
+		// fmt.Println(ctx.Request)
 	   s := time.Now()
 	   ctx.Next()
 	   logger.Info("incming request",zap.String("path", ctx.Request.URL.Path), zap.String("path", ctx.Writer.Header().Get("requestId")), zap.Int("status", ctx.Writer.Status()), zap.Duration("elapsed", time.Now().Sub(s)))
