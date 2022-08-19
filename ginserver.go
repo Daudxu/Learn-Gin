@@ -13,6 +13,8 @@ import (
 func main() {
 	r := gin.Default()
 	logger, err := zap.NewProduction()
+	// file,_:=os.Create("./test.log")
+	// writeSyncer:=zapcore.AddSync(file)
 	if err != nil {
 		panic(err)
 	}
