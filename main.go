@@ -12,11 +12,15 @@ func main() {
 	r := gin.Default()
 	v1 := r.Group("/v1/topics")
 	{
-		v1.GET("", func(ctx *gin.Context) {
-			ctx.String(200,"TEST")
-		})
-
+		v1.GET("", GetTopList)
 		v1.GET("/:topic_id", GetTopicDetail)
+		
+		v1.Use(MustLogin())
+		{
+			v1.POST("", NewTopic)
+			v1.DELETE("/:topic_id", DelTopic)
+		}
+
 	}
 	// logger, err := zap.NewProduction()
 	// // file,_:=os.Create("./test.log")
@@ -49,5 +53,5 @@ func main() {
 	// 	c.String(200, "hello")
 	// })
 
-	r.Run() 
+	r.Run(":8000") 
 }
