@@ -23,7 +23,7 @@ func GetTopicDetail(ctx *gin.Context) {
 }
 
 func NewTopic(ctx *gin.Context) {
-	topic := Topic{}
+	topic := Topic{} 
 	err := ctx.BindJSON(&topic)
 	if err != nil {
 		ctx.String(400, "参数错误：%s", err.Error())
