@@ -13,13 +13,13 @@ func main() {
 	v1 := r.Group("/v1/topics")
 	{
 		v1.GET("", GetTopList)
-		v1.GET("/:topic_id", GetTopicDetail)
+		// v1.GET("/:topic_id", GetTopicDetail)
 		
-		v1.Use(MustLogin())
-		{
-			v1.POST("", NewTopic)
-			v1.DELETE("/:topic_id", DelTopic)
-		}
+		// v1.Use(MustLogin())
+		// {
+		// 	v1.POST("", NewTopic)
+		// 	v1.DELETE("/:topic_id", DelTopic)
+		// }
 
 	}
 	// logger, err := zap.NewProduction()
